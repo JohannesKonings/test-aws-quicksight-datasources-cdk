@@ -2,9 +2,10 @@
 import 'source-map-support/register';
 import * as cdk from '@aws-cdk/core';
 import { TestAwsQuicksightDatasourcesCdkStack } from '../lib/test-aws-quicksight-datasources-cdk-stack';
+import { Tags } from '@aws-cdk/core';
 
 const app = new cdk.App();
-new TestAwsQuicksightDatasourcesCdkStack(app, 'TestAwsQuicksightDatasourcesCdkStack', {
+const testAwsQuicksightDatasourcesCdkStack = new TestAwsQuicksightDatasourcesCdkStack(app, 'TestAwsQuicksightDatasourcesCdkStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */
@@ -19,3 +20,5 @@ new TestAwsQuicksightDatasourcesCdkStack(app, 'TestAwsQuicksightDatasourcesCdkSt
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
+
+Tags.of(testAwsQuicksightDatasourcesCdkStack).add('project', 'test-aws-quicksight-datasources-cdk')
